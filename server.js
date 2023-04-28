@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1/auth', authRouter)
-app.use('/api/v1/job', jobhRouter)
+app.use('/api/v1/jobs', jobhRouter)
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
