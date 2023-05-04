@@ -15,7 +15,15 @@ const register = async (req, res) => {
     }
     const user = await User.create({ name, email, password })
     const taken = user.createJWT()
-    res.status(StatusCodes.CREATED).json({ user, taken })   
+    res.status(StatusCodes.CREATED).json({ 
+        user: {
+            email: user.email,
+            name: user.name,
+            lastName: user.lastName,
+            location: user.location,
+        }, 
+        taken 
+    })   
 }
 
 const login = async (req, res) => {
