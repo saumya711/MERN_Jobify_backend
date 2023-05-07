@@ -1,4 +1,4 @@
-import cors from 'cors';
+// import cors from 'cors';
 import express from "express";
 const app = express()
 import dotenv from 'dotenv'
@@ -16,11 +16,15 @@ import jobhRouter from './routes/jobRoutes.js';
 import notFoundMiddleware from "./middleware/not-found.js";
 import errorHandlerMiddleware from "./middleware/errorHandler.js";
 
-app.use(cors())
+// app.use(cors())
 app.use(express.json())
 
 app.get('/', (req, res) => {
     res.json({ msg: 'Welcome Home Page!!' })
+})
+
+app.get('/api/v1', (req, res) => {
+    res.json({ msg: 'API' })
 })
 
 app.use('/api/v1/auth', authRouter)
