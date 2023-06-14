@@ -1,8 +1,9 @@
+import { UnAuthenticatedError } from "../error/index.js";
 const auth = (req, res, next) => {
-    const headers = req.headers
     const authHeaders = req.headers.authorization
-    console.log(headers);
-    console.log(authHeaders);
+    if (!authHeaders) {
+        throw new UnAuthenticatedError('Authentication Invalid');
+    }
     next(); 
 }
 export default auth;
