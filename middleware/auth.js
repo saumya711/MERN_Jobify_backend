@@ -1,5 +1,8 @@
-const auth = (resq, res, next) => {
-    console.log('authenticate user');
+const auth = (req, res, next) => {
+    const headers = req.headers
+    const authHeaders = req.headers.authorization
+    console.log(headers);
+    console.log(authHeaders);
     next(); 
 }
 export default auth;
