@@ -1,4 +1,4 @@
-import Job from '../models/JobModel'
+import Job from '../models/JobModel.js'
 import { StatusCodes } from 'http-status-codes'
 import { BadRequestError, UnAuthenticatedError } from '../error/index.js';
 
@@ -8,6 +8,9 @@ const createJob = async (req, res) => {
     if( !position || !company){
         throw new BadRequestError('Please Provide all Values')
     } 
+    req.body.createdBy = req.user.userId
+    const job = await Job.create(req.body)
+    res.status(StatusCodes.CREATED).json({ job})
 }
 
 const getAllJobs = async (req, res) => {
